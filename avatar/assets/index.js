@@ -1,11 +1,56 @@
-const ColorMap = {
-  '#45312d': getBlockByStartAndEnd(112, 143).concat(
+const StyleMap = new Map()
+
+StyleMap.set(
+  {
+    background: '#45312d',
+    borderTop: '1px solid #000',
+    boxShadow: '0 0 5px #000',
+  },
+  getBlockByStartAndEnd(112, 143).concat(
     getBlockByStartAndEnd(101, 106).concat(getBlockByStartAndEnd(149, 154))
-  ),
-  '#fff': getBlockByStartAndEnd(118, 121).concat(
-    getBlockByStartAndEnd(134, 137)
-  ),
-}
+  )
+)
+StyleMap.set(
+  {
+    background: '#fff',
+    border: 'none',
+    boxShadow: 'none',
+  },
+  getBlockByStartAndEnd(118, 121).concat(getBlockByStartAndEnd(134, 137))
+)
+StyleMap.set(
+  {
+    borderRadius: '20px 0 0 0',
+  },
+  getBlockByStartAndEnd(101)
+)
+StyleMap.set(
+  {
+    borderRadius: '0 20px 0 0',
+  },
+  getBlockByStartAndEnd(106)
+)
+StyleMap.set(
+  {
+    borderRadius: '0 0 0 20px',
+  },
+  getBlockByStartAndEnd(149)
+)
+StyleMap.set(
+  {
+    borderRadius: '0 0 20px 0',
+  },
+  getBlockByStartAndEnd(154)
+)
+
+const flatColorMap = {}
+
+Array.from(StyleMap.keys()).forEach((i) => {
+  StyleMap.get(i).forEach((index) => {
+    flatColorMap[index] = flatColorMap[index] ?? {}
+    flatColorMap[index] = Object.assign(flatColorMap[index], i)
+  })
+})
 
 function blockIndexProducer(start, end, originalEnd, length) {
   if (!length) {
@@ -26,13 +71,8 @@ function getBlockByStartAndEnd(start, end) {
   return Array.from(new Set(blockIndexProducer(start, end)))
 }
 
-const flatColorMap = {}
-for (let color in ColorMap) {
-  ColorMap[color].forEach((index) => {
-    flatColorMap[index] = color
-  })
-}
 let avatatContainer
+
 const domProducer = (length = 64) => {
   const frameElement = document.createDocumentFragment()
   for (let i = 0; i < length; i++) {
@@ -43,7 +83,9 @@ const domProducer = (length = 64) => {
       div.style.background = '#eae9e7'
     }
     if (i in flatColorMap) {
-      div.style.background = flatColorMap[i]
+      for (const styleItem in flatColorMap[i]) {
+        div.style[styleItem] = flatColorMap[i][styleItem]
+      }
     }
     frameElement.appendChild(div)
   }
@@ -52,5 +94,7 @@ const domProducer = (length = 64) => {
 
 function draw(domId) {
   avatatContainer = document.getElementById(domId)
-  avatatContainer.appendChild(domProducer(256))
+  ;(avatatContainer.style.background =
+    'linear-gradient(to bottom, #d1341d 50%, #eae9e7 50%)'),
+    avatatContainer.appendChild(domProducer(256))
 }

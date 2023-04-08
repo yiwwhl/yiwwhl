@@ -22,5 +22,11 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: radial-gradient(closest-side, #00000020, #ffffff20, #2a1a0850);
+  background: radial-gradient(
+    closest-side,
+    #00000020,
+    #ffffff20,
+    #ffffff10,
+    #2a1a0840
+  );
 }

@@ -23,7 +23,7 @@
   top: 0;
   bottom: 0;
   background: radial-gradient(
-    closest-side,
+    closest-side at center,
     #00000020,
     #ffffff20,
     #ffffff10,

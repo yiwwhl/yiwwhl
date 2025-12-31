@@ -7,11 +7,8 @@
 <!--START_SECTION:waka-->
 
 ```txt
-TypeScript           1 hr 44 mins    ███████████████████████▓░   95.24 %
-Markdown             3 mins          █░░░░░░░░░░░░░░░░░░░░░░░░   03.53 %
-JavaScript           1 min           ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.04 %
-SSH Key              0 secs          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.11 %
-SCSS                 0 secs          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.05 %
+SSH Key              0 secs          ████████████████████▓░░░░   83.09 %
+JSON with Comments   0 secs          ████▒░░░░░░░░░░░░░░░░░░░░   16.91 %
 ```
 
 <!--END_SECTION:waka-->

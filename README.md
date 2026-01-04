@@ -7,8 +7,7 @@
 <!--START_SECTION:waka-->
 
 ```txt
-SSH Key              0 secs          ████████████████████▓░░░░   83.09 %
-JSON with Comments   0 secs          ████▒░░░░░░░░░░░░░░░░░░░░   16.91 %
+No activity tracked
 ```
 
 <!--END_SECTION:waka-->
